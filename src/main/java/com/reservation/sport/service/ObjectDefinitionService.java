@@ -17,6 +17,10 @@ public class ObjectDefinitionService {
         return objectDefinitionRepository.findDataNameAndAddressAndObjectType(name, address, objectDefinitionId);
     }
 
+    public List<ObjectDefinition> getObjectDefinitionByUser(Long userId){
+        return objectDefinitionRepository.findByUserId(userId);
+    }
+
     public void saveObjectDefinition(ObjectDefinition objectDefinition){
         objectDefinitionRepository.save(objectDefinition);
     }

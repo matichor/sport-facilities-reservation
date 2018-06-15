@@ -11,4 +11,5 @@ public interface ObjectDefinitionRepository extends JpaRepository<ObjectDefiniti
 
     @Query("select objectdefinition from ObjectDefinition objectdefinition where objectdefinition.name = :name or objectdefinition.address = :address or objectdefinition.objectType.id like :objectTypeId")
     List<ObjectDefinition> findDataNameAndAddressAndObjectType(@Param("name") String name, @Param("address") String address, @Param("objectTypeId") Long objectTypeId);
+    List<ObjectDefinition> findByUserId(Long userId);
 }
