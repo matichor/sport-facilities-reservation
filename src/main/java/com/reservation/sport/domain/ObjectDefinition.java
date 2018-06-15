@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalTime;
 
 /**
  * A user.
@@ -27,6 +28,12 @@ public class ObjectDefinition implements Serializable {
     @Column(name = "description", length = 50)
     private String description;
 
+    @Column(name = "start_hour")
+    private LocalTime startHour;
+
+    @Column(name = "end_hour")
+    private LocalTime endHour;
+
     @Size(max = 50)
     @Column(name = "address", length = 50)
     private String address;
@@ -40,6 +47,22 @@ public class ObjectDefinition implements Serializable {
     @ManyToOne
     @JoinColumn(name = "object_type_id")
     private ObjectType objectType;
+
+    public LocalTime getStartHour() {
+        return startHour;
+    }
+
+    public void setStartHour(LocalTime startHour) {
+        this.startHour = startHour;
+    }
+
+    public LocalTime getEndHour() {
+        return endHour;
+    }
+
+    public void setEndHour(LocalTime endHour) {
+        this.endHour = endHour;
+    }
 
     public Long getId() {
         return id;

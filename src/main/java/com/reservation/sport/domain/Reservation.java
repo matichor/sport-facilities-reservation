@@ -1,8 +1,9 @@
 package com.reservation.sport.domain;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name="reservation")
@@ -13,13 +14,13 @@ public class Reservation {
     private Long id;
 
     @Column(name="reservation_date")
-    private LocalDate reservation_date;
+    private LocalDate reservationDate;
 
     @Column(name="time_from")
-    private LocalDateTime timeFrom;
+    private LocalTime timeFrom;
 
     @Column(name="time_till")
-    private LocalDateTime timeTill;
+    private LocalTime timeTill;
 
     @ManyToOne
     @JoinColumn(name = "object_definition_id")
@@ -36,27 +37,27 @@ public class Reservation {
         this.id = id;
     }
 
-    public LocalDate getReservation_date() {
-        return reservation_date;
+    public LocalDate getReservationDate() {
+        return reservationDate;
     }
 
-    public void setReservation_date(LocalDate reservation_date) {
-        this.reservation_date = reservation_date;
+    public void setReservationDate(LocalDate reservationDate) {
+        this.reservationDate = reservationDate;
     }
 
-    public LocalDateTime getTimeFrom() {
+    public LocalTime getTimeFrom() {
         return timeFrom;
     }
 
-    public void setTimeFrom(LocalDateTime timeFrom) {
+    public void setTimeFrom(LocalTime timeFrom) {
         this.timeFrom = timeFrom;
     }
 
-    public LocalDateTime getTimeTill() {
+    public LocalTime getTimeTill() {
         return timeTill;
     }
 
-    public void setTimeTill(LocalDateTime timeTill) {
+    public void setTimeTill(LocalTime timeTill) {
         this.timeTill = timeTill;
     }
 
