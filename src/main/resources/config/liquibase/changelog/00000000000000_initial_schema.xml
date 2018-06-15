@@ -179,9 +179,21 @@
             <column name="description" type="varchar(500)"/>
             <column name="address" type="varchar(500)"/>
             <column name="price" type="decimal"/>
+            <column name="start_hour" type="time"/>
+            <column name="end_hour" type="time"/>
             <column name="user_id" type="bigint"/>
             <column name="object_type_id" type="bigint"/>
         </createTable>
         <addPrimaryKey columnNames="id" tableName="object_definition"/>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/objectTypes.csv"
+                  separator=";"
+                  tableName="object_type">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/obiectDefinitions.csv"
+                  separator=";"
+                  tableName="object_definition">
+        </loadData>
     </changeSet>
 </databaseChangeLog>

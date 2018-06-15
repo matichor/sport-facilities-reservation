@@ -1,8 +1,15 @@
 package com.reservation.sport.repository;
 
+import com.reservation.sport.domain.ObjectDefinition;
 import com.reservation.sport.domain.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ReservationRepository  extends JpaRepository<Reservation, Long> {
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Optional;
 
+public interface ReservationRepository  extends JpaRepository<Reservation, Long> {
+    List<Reservation> findAllByReservationDateAndObjectDefinition(LocalDate reservationDate, ObjectDefinition objectDefinition);
+    Optional<Reservation> findByReservationDateAndTimeFrom(LocalDate date, LocalTime timeFrom);
 }
