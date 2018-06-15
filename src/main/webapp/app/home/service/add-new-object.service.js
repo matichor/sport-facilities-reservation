@@ -3,9 +3,9 @@
 
     angular.module('sportPlaceReservationApp').factory('AddNewObjectDialogService', AddNewObjectDialogService);
 
-    AddNewObjectDialogService.$inject = ['$uibModal'];
+    AddNewObjectDialogService.$inject = ['$uibModal', 'NewObjectTypeResource', 'Principal'];
 
-    function AddNewObjectDialogService($uibModal) {
+    function AddNewObjectDialogService($uibModal, NewObjectTypeResource, Principal) {
         var service = {
             open: open
         };
@@ -24,7 +24,18 @@
                 templateUrl: 'app/home/add-new-object/add-new-object-dialog.html',
                 controller: 'AddNewObjectDialogController',
                 controllerAs: 'vm',
-                windowTopClass: 'new-object'
+                windowTopClass: 'new-object',
+                resolve: {
+                    types: function() {
+                        return NewObjectTypeResource.get();
+                    },
+                    userId: function() {
+                        return Principal.identity().then(function(account) {
+                            var userId = account.id;
+                            return userId;
+                        });
+                    }
+                }
             });
             modalInstance.result.then(resetModal, resetModal);
         }

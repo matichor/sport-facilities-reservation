@@ -82,6 +82,26 @@ Development Ribbon
     }
 }
 
+.booking-event {
+    width: 355px !important;
+    overflow-y: hidden;
+    height: 480px;
+    .modal-dialog {
+        width: 100% !important;
+        margin: 0;
+    }
+    .modal-body {
+        overflow-y: hidden;
+        max-height: 520px;
+    }
+
+    .modal-content {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+}
+
 /* ==========================================================================
 Version number in navbar
 ========================================================================== */
