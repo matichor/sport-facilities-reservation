@@ -4,12 +4,10 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1 data-translate="home.title">Welcome, Java Hipster!</h1>
-            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
-
+            <h1>Welcome in Sport Place Reservation</h1>
             <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
-                    You are logged in as user "{{vm.account.login}}".
+                <div class="alert alert-success" ng-switch-when="true" translate-values="{username: '{{vm.account.login}}'}">
+                    Witaj użytkowniku "{{vm.account.login}}".
                 </div>
 
                 <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
@@ -21,21 +19,57 @@
                 </div>
             </div>
 
-            <p data-translate="home.question">
-                If you have any question on JHipster:
-            </p>
-
-            <ul>
-                <li><a href="http://www.jhipster.tech/" target="_blank" rel="noopener" data-translate="home.link.homepage">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener" data-translate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener" data-translate="home.link.bugtracker">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener" data-translate="home.link.chat">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank" rel="noopener" data-translate="home.link.follow">follow @java_hipster on Twitter</a></li>
-            </ul>
-
             <p>
-             <span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener" data-translate="home.github">GitHub</a>!
+                Znajdź swoj obiekt: 
+                <button type="button" class="btn btn-primary pull-right" ng-click="vm.openAddNewObjectDialog();">Dodaj Obiekt</button>
             </p>
+
+            <div class="input-append">
+                <input type="text" ng-model="vm.query" ng-change="vm.search()" class="input-large search-query" placeholder="Szukaj obiektu.. ">
+            <span class="add-on"><i class="icon-search"></i></span>
+            </div>
+
+            <table class="table table-striped table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="id">Id&nbsp;<a ng-click="vm.sort_by('id')"><i class="icon-sort"></i></a></th>
+                        <th class="name">Name&nbsp;<a ng-click="vm.sort_by('name')"><i class="icon-sort"></i></a></th>
+                        <th class="description">Description&nbsp;<a ng-click="vm.sort_by('description')"><i class="icon-sort"></i></a></th>
+                        <th class="field3">Field 3&nbsp;<a ng-click="vm.sort_by('field3')"><i class="icon-sort"></i></a></th>
+                        <th class="field4">Field 4&nbsp;<a ng-click="vm.sort_by('field4')"><i class="icon-sort"></i></a></th>
+                        <th class="field5">Action&nbsp;<a ng-click="vm.sort_by('field5')"><i class="icon-sort"></i></a></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <td colspan="6">
+                        <div class="pagination pull-right">
+                            <ul>
+                                <li ng-class="{disabled: vm.currentPage == 0}">
+                                    <a href ng-click="vm.prevPage()">« Prev</a>
+                                </li>
+                                <li ng-repeat="n in vm.range(vm.pagedItems.length)"
+                                    ng-class="{active: n == vm.currentPage}"
+                                ng-click="vm.setPage()">
+                                    <a href ng-bind="n + 1">1</a>
+                                </li>
+                                <li ng-class="{disabled: vm.currentPage == vm.pagedItems.length - 1}">
+                                    <a href ng-click="vm.nextPage()">Next »</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tfoot>
+                <tbody>
+                    <tr ng-repeat="item in vm.pagedItems[vm.currentPage] | orderBy: vm.sortingOrder:vm.reverse">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.field3}}</td>
+                        <td>{{item.field4}}</td>
+                        <td><button type="button" class="btn btn-success" ng-click="vm.openBookingEventDialog();">{{item.action}}</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

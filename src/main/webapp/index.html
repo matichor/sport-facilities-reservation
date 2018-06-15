@@ -20,8 +20,13 @@
     <!-- endbuild -->
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="manifest" href="manifest.webapp" />
+    <meta charset="utf-8">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+  
+
 </head>
-<body ng-app="sportPlaceReservationApp" ng-strict-di>
+<body ng-csp ng-app="sportPlaceReservationApp" ng-strict-di>
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -84,6 +89,11 @@
     <!-- endinject -->
     <!-- endbuild -->
 
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<!-- Angular reservation minified -->
+<script type="text/javascript" src="bower_components/angular-reservation/dist/angular-reservation.min.js"></script>
+
+
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
     <script src="app/app.module.js"></script>
@@ -104,8 +114,12 @@
     <script src="app/layouts/navbar/navbar.controller.js"></script>
     <script src="app/layouts/navbar/active-menu.directive.js"></script>
     <script src="app/layouts/error/error.state.js"></script>
+    <script src="app/home/service/booking-event.service.js"></script>
+    <script src="app/home/service/add-new-object.service.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
+    <script src="app/home/booking-event-dialog/booking-event-dialog.controller.js"></script>
+    <script src="app/home/add-new-object/add-new-object-dialog.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
