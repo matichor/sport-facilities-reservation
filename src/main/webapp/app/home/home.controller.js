@@ -44,7 +44,7 @@
         }
 
         function getObjectDefinition(){
-            ObjectDefinition.get({name:'name', address: 'address', objectTypeId:1}, function(result){
+            ObjectDefinition.get({name:null, address: null, objectTypeId:null}, function(result){
               console.log(result);
             });
         }
