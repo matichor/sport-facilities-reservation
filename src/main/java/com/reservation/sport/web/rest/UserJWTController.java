@@ -1,5 +1,11 @@
 package com.reservation.sport.web.rest;
 
+import com.reservation.sport.domain.ObjectDefinition;
+import com.reservation.sport.domain.ObjectType;
+import com.reservation.sport.domain.Reservation;
+import com.reservation.sport.repository.ObjectDefinitionRepository;
+import com.reservation.sport.repository.ObjectTypeRepository;
+import com.reservation.sport.repository.ReservationRepository;
 import com.reservation.sport.security.jwt.JWTConfigurer;
 import com.reservation.sport.security.jwt.TokenProvider;
 import com.reservation.sport.web.rest.vm.LoginVM;
@@ -7,6 +13,7 @@ import com.reservation.sport.web.rest.vm.LoginVM;
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +24,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Controller to authenticate users.
@@ -28,6 +38,7 @@ public class UserJWTController {
     private final TokenProvider tokenProvider;
 
     private final AuthenticationManager authenticationManager;
+
 
     public UserJWTController(TokenProvider tokenProvider, AuthenticationManager authenticationManager) {
         this.tokenProvider = tokenProvider;

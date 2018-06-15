@@ -3,7 +3,10 @@ package com.reservation.sport.repository;
 import com.reservation.sport.SportPlaceReservationApp;
 import com.reservation.sport.config.Constants;
 import com.reservation.sport.config.audit.AuditEventConverter;
+import com.reservation.sport.domain.ObjectDefinition;
+import com.reservation.sport.domain.ObjectType;
 import com.reservation.sport.domain.PersistentAuditEvent;
+import com.reservation.sport.domain.Reservation;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +20,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +47,15 @@ public class CustomAuditEventRepositoryIntTest {
 
     @Autowired
     private AuditEventConverter auditEventConverter;
+
+    @Autowired
+    private ObjectDefinitionRepository objectDefinitionRepository;
+
+    @Autowired
+    private ObjectTypeRepository objectTypeRepository;
+
+    @Autowired
+    private ReservationRepository reservationRepository;
 
     private CustomAuditEventRepository customAuditEventRepository;
 
@@ -240,6 +255,33 @@ public class CustomAuditEventRepositoryIntTest {
         customAuditEventRepository.add(event);
         List<PersistentAuditEvent> persistentAuditEvents = persistenceAuditEventRepository.findAll();
         assertThat(persistentAuditEvents).hasSize(0);
+    }
+
+    @Test
+    public void entityTest(){
+        ObjectType objectType = new ObjectType();
+        objectType.setName("Boisko");
+        objectType.setDescription("PPPP");
+        objectType = objectTypeRepository.save(objectType);
+
+        ObjectDefinition objectDefinition = new ObjectDefinition();
+        objectDefinition.setName("PPPasd");
+        objectDefinition.setDescription("asdasd");
+        objectDefinition.setObjectType(objectType);
+        objectDefinition.setPrice(new BigDecimal("231.21"));
+        objectDefinition = objectDefinitionRepository.save(objectDefinition);
+        List<ObjectDefinition> all = objectDefinitionRepository.findAll();
+
+        Reservation reservation = new Reservation();
+        reservation.setTimeFrom(LocalDateTime.now());
+        reservation.setTimeFrom(LocalDateTime.now());
+        reservation.setReservation_date(LocalDate.now());
+        reservation.setObjectDefinition(objectDefinition);
+        reservation.setUserId(1L);
+
+        reservationRepository.save(reservation);
+
+        List<Reservation> all1 = reservationRepository.findAll();
     }
 
 }
