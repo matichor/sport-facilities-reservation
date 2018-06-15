@@ -145,5 +145,21 @@
                                  constraintName="fk_evt_pers_audit_evt_data"
                                  referencedColumnNames="event_id"
                                  referencedTableName="jhi_persistent_audit_event"/>
+
+        <createTable tableName="reservation">
+            <column name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="object_definition_id" type="bigint"/>
+            <column name="reservation_date" type="date"/>
+            <column name="time_from" type="time"/>
+            <column name="time_till" type="time"/>
+            <column name="user_id" type="bigint"/>
+        </createTable>
+        <addPrimaryKey columnNames="id" tableName="reservation"/>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/registration.csv"
+                  separator=";"
+                  tableName="reservation"/>
     </changeSet>
 </databaseChangeLog>
