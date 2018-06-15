@@ -21,6 +21,13 @@ public class Reservation {
     @Column(name="time_till")
     private LocalDateTime timeTill;
 
+    @ManyToOne
+    @JoinColumn(name = "object_definition_id")
+    private ObjectDefinition objectDefinition;
+
+    @Column(name = "user_id")
+    private Long userId;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +58,21 @@ public class Reservation {
 
     public void setTimeTill(LocalDateTime timeTill) {
         this.timeTill = timeTill;
+    }
+
+    public ObjectDefinition getObjectDefinition() {
+        return objectDefinition;
+    }
+
+    public void setObjectDefinition(ObjectDefinition objectDefinition) {
+        this.objectDefinition = objectDefinition;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

@@ -161,5 +161,27 @@
                   file="config/liquibase/registration.csv"
                   separator=";"
                   tableName="reservation"/>
+
+        <createTable tableName="object_type">
+            <column name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+            <column name="description" type="varchar(500)"/>
+        </createTable>
+        <addPrimaryKey columnNames="id" tableName="object_type"/>
+
+        <createTable tableName="object_definition">
+            <column name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+            <column name="description" type="varchar(500)"/>
+            <column name="address" type="varchar(500)"/>
+            <column name="price" type="decimal"/>
+            <column name="user_id" type="bigint"/>
+            <column name="object_type_id" type="bigint"/>
+        </createTable>
+        <addPrimaryKey columnNames="id" tableName="object_definition"/>
     </changeSet>
 </databaseChangeLog>
