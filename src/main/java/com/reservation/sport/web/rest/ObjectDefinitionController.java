@@ -4,9 +4,7 @@ import com.reservation.sport.domain.ObjectDefinition;
 import com.reservation.sport.repository.ObjectDefinitionRepository;
 import com.reservation.sport.service.ObjectDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,10 @@ public class ObjectDefinitionController {
     @GetMapping("/objectdefinitions")
     public List<ObjectDefinition> getObjectDefinitions(String name, String address, Long objectTypeId) {
         return  objectDefinitionService.getObjectDefinition(name, address, objectTypeId);
+    }
+
+    @PostMapping("/objectdefinitions")
+    public void saveObjectDefinition(@RequestBody ObjectDefinition objectDefinition){
+        objectDefinitionService.saveObjectDefinition(objectDefinition);
     }
 }

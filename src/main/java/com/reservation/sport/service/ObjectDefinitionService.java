@@ -17,4 +17,8 @@ public class ObjectDefinitionService {
         return objectDefinitionRepository.findDataNameAndAddressAndObjectType(name, address, objectDefinitionId);
     }
 
+    public void saveObjectDefinition(ObjectDefinition objectDefinition){
+        objectDefinitionRepository.save(objectDefinition);
+    }
+
 }
