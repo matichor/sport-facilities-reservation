@@ -20,6 +20,11 @@ public class ObjectDefinitionController {
         return  objectDefinitionService.getObjectDefinition(name, address, objectTypeId);
     }
 
+    @GetMapping("/objectdefinitionsbyuser")
+    public List<ObjectDefinition> getObjectDefinitionsByUser(Long userId) {
+        return  objectDefinitionService.getObjectDefinitionByUser(userId);
+    }
+
     @PostMapping("/objectdefinitions")
     public void saveObjectDefinition(@RequestBody ObjectDefinition objectDefinition){
         objectDefinitionService.saveObjectDefinition(objectDefinition);

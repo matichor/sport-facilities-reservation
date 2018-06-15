@@ -31,6 +31,16 @@ public class ReservationResource {
         return new ResponseEntity<>(reservationService.getAvailableDates(), HttpStatus.OK);
     }
 
+    @GetMapping("/reservesByUser")
+    public ResponseEntity<List<Reservation>> getReservesByUser(Long userId){
+        return new ResponseEntity<>(reservationService.getReservationsByUserId(userId), HttpStatus.OK);
+    }
+
+    @GetMapping("/reservesByObject")
+    public ResponseEntity<List<Reservation>> getReservesByObject(Long objectDefinitionId){
+        return new ResponseEntity<>(reservationService.getReservationsByObjectDefinition(objectDefinitionId), HttpStatus.OK);
+    }
+
     @GetMapping("/availableHours")
     public ResponseEntity<List<String>> getAvailableHours(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate selectedDate,
                                                           @RequestParam Long objectDefinitionId){

@@ -24,6 +24,7 @@
                 templateUrl: 'app/home/booking-event-dialog/booking-event-dialog.html',
                 controller: 'BookingEventDialogController',
                 controllerAs: 'vm',
+                windowTopClass: 'booking-event'
             });
             modalInstance.result.then(resetModal, resetModal);
         }

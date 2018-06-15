@@ -28,8 +28,6 @@
             AddNewObjectDialogService.open();
         }
 
-
-
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
@@ -39,6 +37,7 @@
         function getAccount() {
             Principal.identity().then(function(account) {
                 vm.account = account;
+                console.log(vm.account);
                 vm.isAuthenticated = Principal.isAuthenticated;
             });
         }

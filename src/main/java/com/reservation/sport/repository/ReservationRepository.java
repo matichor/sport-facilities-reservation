@@ -12,4 +12,6 @@ import java.util.Optional;
 public interface ReservationRepository  extends JpaRepository<Reservation, Long> {
     List<Reservation> findAllByReservationDateAndObjectDefinition(LocalDate reservationDate, ObjectDefinition objectDefinition);
     Optional<Reservation> findByReservationDateAndTimeFrom(LocalDate date, LocalTime timeFrom);
+    List<Reservation> findAllByUserIdOrderByReservationDate(Long userId);
+    List<Reservation> findAllByObjectDefinitionOrderByReservationDate(ObjectDefinition objectDefinition);
 }

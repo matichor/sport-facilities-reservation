@@ -42,6 +42,15 @@ public class ReservationService {
         return availableDates;
     }
 
+    public List<Reservation> getReservationsByUserId(Long userId){
+        return reservationRepository.findAllByUserIdOrderByReservationDate(userId);
+    }
+
+    public List<Reservation> getReservationsByObjectDefinition(Long objectDefinitionId){
+        ObjectDefinition objectDefinition = objectDefinitionRepository.findOne(objectDefinitionId);
+        return reservationRepository.findAllByObjectDefinitionOrderByReservationDate(objectDefinition);
+    }
+
     public List<String> getAvailableHours(LocalDate reservationDate, Long objectDefinitionId){
 
         ObjectDefinition objectDefinition = objectDefinitionRepository.findOne(objectDefinitionId);

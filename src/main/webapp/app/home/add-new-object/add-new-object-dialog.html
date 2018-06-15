@@ -1,4 +1,5 @@
 <div class="modal-body">
+  <form name="newObjectForm"></form>
 
     <div class="modal-header">
         <button type="button" class="close-dialog" aria-hidden="true" ng-click="vm.closeDialog();">&times;</button>
@@ -6,30 +7,27 @@
     </div>
       <div class="form-group">
           <label for="name">Object Name</label>
-          <input type="name" class="form-control" ng-model="vm.object.name" id="name" placeholder="Object Name">
+          <input type="name" class="form-control" ng-model="vm.model.name" id="name" placeholder="Object Name">
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <input type="description" class="form-control" id="description" ng-model="vm.object.description" placeholder="Description of object">
+          <input type="description" class="form-control" id="description" ng-model="vm.model.description" placeholder="Description of object">
         </div>
         <div class="form-group">
           <label for="description">Address</label>
-          <input type="Address" class="form-control" id="address" ng-model="vm.object.address" placeholder="Object Address">
+          <input type="Address" class="form-control" id="address" ng-model="vm.model.address" placeholder="Object Address">
         </div>
         <div class="form-group">
           <label for="type">Object type</label>
-          <select class="form-control" ng-model="vm.object.type" id="type">
-            <option>Type1</option>
-            <option>Type2</option>
-            <option>Type3</option>
-            <option>Type4</option>
-            <option>Type5</option>
+          <select class="form-control" ng-model="vm.model.type" id="type">
+            <option ng-repeat="item in vm.objectTypes" value="{{item}}">{{item.name}}</option>
+
           </select>
         </div>
         <div class="form-group">
           <label for="price">Price</label>
-          <input type="price" class="form-control" id="price" ng-model="vm.object.price" placeholder="Object Address">
+          <input type="price" class="form-control" id="price" ng-model="vm.model.price" placeholder="Object Address">
         </div>
-        <button type="button" class="btn btn-secondary">Dodaj Obiekt</button>
+        <button type="submit" class="btn btn-secondary" ng-click="vm.saveNewObject();">Dodaj Obiekt</button>
 </div>
  
