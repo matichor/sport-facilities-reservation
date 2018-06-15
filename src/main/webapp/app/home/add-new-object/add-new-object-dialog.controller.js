@@ -3,9 +3,9 @@
 
     angular.module('sportPlaceReservationApp').controller('AddNewObjectDialogController', AddNewObjectDialogController);
 
-    AddNewObjectDialogController.$inject = ['$uibModalInstance', 'types', 'NewObjectTypeResource', 'userId'];
+    AddNewObjectDialogController.$inject = ['$uibModalInstance', 'types', 'NewObjectTypeResource', 'userId', 'clearInstance'];
 
-    function AddNewObjectDialogController($uibModalInstance, types, NewObjectTypeResource, userId) {
+    function AddNewObjectDialogController($uibModalInstance, types, NewObjectTypeResource, userId,  clearInstance) {
         var vm = this;
 
         vm.closeDialog = closeDialog;
@@ -22,8 +22,10 @@
         });
 
         function saveNewObject() {
-            vm.model.$save();
-            $uibModalInstance.close();
+            vm.model.$save().then(function() {
+                clearInstance();
+                $uibModalInstance.close();
+            });
         }
 
         function closeDialog() {
