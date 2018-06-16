@@ -3,12 +3,13 @@
 
     angular.module('sportPlaceReservationApp').controller('BookingEventDialogController', BookingEventDialogController);
 
-    BookingEventDialogController.$inject = ['$uibModalInstance', '$timeout'];
+    BookingEventDialogController.$inject = ['$uibModalInstance', '$timeout','itemId'];
 
-    function BookingEventDialogController($uibModalInstance, $timeout) {
+    function BookingEventDialogController($uibModalInstance, $timeout,itemId) {
         var vm = this;
 
         vm.closeDialog = closeDialog;
+        vm.itemId = itemId;
 
         function closeDialog() {
             $uibModalInstance.dismiss();
@@ -22,7 +23,10 @@
             minDate: new Date(), //Disabled date selection before today
             showWeeks: false, //Don't show weeks
             startingDay: 1, //Starting day at Monday
-            dateDisabled: myDisabledDates //Disabled dates
+            dateDisabled: myDisabledDates,
+            request:{
+                id: vm.itemId
+            }
         };
 
         //Disabled dates

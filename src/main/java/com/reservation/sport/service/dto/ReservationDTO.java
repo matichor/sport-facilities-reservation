@@ -11,6 +11,7 @@ public class ReservationDTO {
         this.id = reservation.getId();
         this.reservationDate = reservation.getReservationDate();
         this.timeFrom = reservation.getTimeFrom();
+        this.status = "SUCCESS";
     }
 
     private Long id;
@@ -18,6 +19,10 @@ public class ReservationDTO {
     private LocalDate reservationDate;
 
     private LocalTime timeFrom;
+
+    private String status = "SUCCESS";
+
+    private String message = "";
 
     public Long getId() {
         return id;
@@ -41,5 +46,21 @@ public class ReservationDTO {
 
     public void setTimeFrom(LocalTime timeFrom) {
         this.timeFrom = timeFrom;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

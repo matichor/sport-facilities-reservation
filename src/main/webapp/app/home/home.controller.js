@@ -20,8 +20,8 @@
 
         vm.getObjectDefinition();
 
-        function openBookingEventDialog() {
-            BookingEventServiceDialog.open();
+        function openBookingEventDialog(item) {
+            BookingEventServiceDialog.open(item);
         }
 
         function openAddNewObjectDialog() {

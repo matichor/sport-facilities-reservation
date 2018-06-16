@@ -17,14 +17,20 @@
 
         return service;
 
-        function open() {
+        function open(objectId) {
             if (modalInstance !== null) return;
             modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'app/home/booking-event-dialog/booking-event-dialog.html',
                 controller: 'BookingEventDialogController',
                 controllerAs: 'vm',
-                windowTopClass: 'booking-event'
+                windowTopClass: 'booking-event',
+                resolve: {
+                    itemId: function () {
+                        console.log(objectId);
+                        return objectId;
+                    }
+                }
             });
             modalInstance.result.then(resetModal, resetModal);
         }

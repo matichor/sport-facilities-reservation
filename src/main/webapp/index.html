@@ -12,6 +12,7 @@
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="bower_components/angular-reservation/dist/angular-reservation.min.css">
     <!-- endinject -->
     <link rel="stylesheet" href="content/css/vendor.css">
     <!-- endbuild -->
@@ -23,7 +24,7 @@
     <meta charset="utf-8">
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
-  
+
 
 </head>
 <body ng-csp ng-app="sportPlaceReservationApp" ng-strict-di>
@@ -86,12 +87,15 @@
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-reservation/dist/angular-reservation.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
     <script src="bower_components/angular-messages/angular-messages.min.js"></script>
 <!-- Angular reservation minified -->
-<script type="text/javascript" src="bower_components/angular-reservation/dist/angular-reservation.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-reservation/dist/angular-reservation.js"></script>
 
 
     <!-- build:js app/app.js  -->
@@ -159,6 +163,7 @@
     <script src="app/blocks/config/uib-pager.config.js"></script>
     <script src="app/blocks/config/translation-storage.provider.js"></script>
     <script src="app/blocks/config/translation.config.js"></script>
+    <script src="app/blocks/config/reservation.config.js"></script>
     <script src="app/blocks/config/localstorage.config.js"></script>
     <script src="app/blocks/config/http.config.js"></script>
     <script src="app/blocks/config/compile.config.js"></script>
