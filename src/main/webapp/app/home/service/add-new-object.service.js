@@ -40,7 +40,7 @@
                     }
                 }
             });
-            // modalInstance.result.then(resetModal, resetModal);
+            modalInstance.result.then(resetModal, resetModal);
             return modalInstance;
         }
     }

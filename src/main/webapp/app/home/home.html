@@ -4,7 +4,7 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>Welcome in Sport Place Reservation</h1>
+            <h1>Welcome in Object Place Reservation</h1>
             <div ng-switch="vm.isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true" translate-values="{username: '{{vm.account.login}}'}">
                     Witaj użytkowniku "{{vm.account.login}}".
@@ -19,57 +19,64 @@
                 </div>
             </div>
 
-            <p>
-                Znajdź swoj obiekt:
-                <button type="button" class="btn btn-primary pull-right" ng-click="vm.openAddNewObjectDialog();">Dodaj Obiekt</button>
-            </p>
+        
 
-            <div class="input-append">
-                <input type="text" ng-model="vm.query" ng-change="vm.search()" class="input-large search-query" placeholder="Szukaj obiektu.. ">
-            <span class="add-on"><i class="icon-search"></i></span>
+            <div ng-if="vm.isAuthenticated()">
+
+                    <p>
+                            Znajdź swoj obiekt:
+                            <button type="button" class="btn btn-primary pull-right" ng-click="vm.openAddNewObjectDialog();">Dodaj Obiekt</button>
+                    </p>
+        
+                    <div class="input-append">
+                        <input type="text" ng-model="vm.query" ng-change="vm.search()" class="input-large search-query" placeholder="Szukaj obiektu.. ">
+                    <span class="add-on"><i class="icon-search"></i></span>
+                    </div>
+
+                
+            <table class="table table-striped table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th class="name">Name&nbsp;<a ng-click="vm.sort_by('name')"><i class="icon-sort"></i></a></th>
+                            <th class="description">Description&nbsp;<a ng-click="vm.sort_by('description')"><i class="icon-sort"></i></a></th>
+                            <th class="address">Address&nbsp;<a ng-click="vm.sort_by('field3')"><i class="icon-sort"></i></a></th>
+                            <th class="price">Price&nbsp;<a ng-click="vm.sort_by('field4')"><i class="icon-sort"></i></a></th>
+                            <th> &nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <td colspan="6">
+                            <div class="pagination pull-right">
+                                <ul>
+                                    <li ng-class="{disabled: vm.currentPage == 0}">
+                                        <a href ng-click="vm.prevPage()">« Prev</a>
+                                    </li>
+                                    <li ng-repeat="n in vm.range(vm.pagedItems.length)"
+                                        ng-class="{active: n == vm.currentPage}"
+                                    ng-click="vm.setPage()">
+                                        <a href ng-bind="n + 1">1</a>
+                                    </li>
+                                    <li ng-class="{disabled: vm.currentPage == vm.pagedItems.length - 1}">
+                                        <a href ng-click="vm.nextPage()">Next »</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tfoot>
+                    <tbody>
+                        <tr ng-repeat="item in vm.pagedItems[vm.currentPage] | orderBy: vm.sortingOrder:vm.reverse">
+                            <td>{{item.name}}</td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.address}}</td>
+                            <td>{{item.price}} PLN</td>
+                            <td><button type="button" class="btn btn-success" ng-click="vm.openBookingEventDialog(item.id);">{{item.action}}</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
             </div>
 
-            <table class="table table-striped table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th class="id">Id&nbsp;<a ng-click="vm.sort_by('id')"><i class="icon-sort"></i></a></th>
-                        <th class="name">Name&nbsp;<a ng-click="vm.sort_by('name')"><i class="icon-sort"></i></a></th>
-                        <th class="description">Description&nbsp;<a ng-click="vm.sort_by('description')"><i class="icon-sort"></i></a></th>
-                        <th class="field3">Field 3&nbsp;<a ng-click="vm.sort_by('field3')"><i class="icon-sort"></i></a></th>
-                        <th class="field4">Field 4&nbsp;<a ng-click="vm.sort_by('field4')"><i class="icon-sort"></i></a></th>
-                        <th class="field5">Action&nbsp;<a ng-click="vm.sort_by('field5')"><i class="icon-sort"></i></a></th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <td colspan="6">
-                        <div class="pagination pull-right">
-                            <ul>
-                                <li ng-class="{disabled: vm.currentPage == 0}">
-                                    <a href ng-click="vm.prevPage()">« Prev</a>
-                                </li>
-                                <li ng-repeat="n in vm.range(vm.pagedItems.length)"
-                                    ng-class="{active: n == vm.currentPage}"
-                                ng-click="vm.setPage()">
-                                    <a href ng-bind="n + 1">1</a>
-                                </li>
-                                <li ng-class="{disabled: vm.currentPage == vm.pagedItems.length - 1}">
-                                    <a href ng-click="vm.nextPage()">Next »</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tfoot>
-                <tbody>
-                    <tr ng-repeat="item in vm.pagedItems[vm.currentPage] | orderBy: vm.sortingOrder:vm.reverse">
-                        <td>{{item.id}}</td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.address}}</td>
-                        <td>{{item.price}}</td>
-                        <td><button type="button" class="btn btn-success" ng-click="vm.openBookingEventDialog(item.id);">{{item.action}}</button></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

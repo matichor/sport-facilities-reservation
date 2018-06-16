@@ -121,5 +121,5 @@
         "emailexists": "Użytkownik z takim adresem email już istnieje!",
         "idexists": "Nowy {{entityName}} nie może jeszcze mieć przypisanego ID"
     },
-    "footer": "To jest stopka"
+    "footer": "Hackaton 2018"
 }

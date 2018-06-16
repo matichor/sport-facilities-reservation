@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Reservation Date</th>
+        <th scope="col">Time From</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in  vm.getFullReservation">
+        <td>{{item.objectDefinition.name}}</td>
+        <td>{{item.reservationDate}}</td>
+        <td>{{item.timeFrom}}</td>
+        <td>{{item.objectDefinition.address}}</td>
+      </tr>
+    </tbody>
+  </table>

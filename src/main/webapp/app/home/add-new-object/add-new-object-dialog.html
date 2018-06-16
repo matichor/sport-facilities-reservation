@@ -5,29 +5,54 @@
         <button type="button" class="close-dialog" aria-hidden="true" ng-click="vm.closeDialog();">&times;</button>
         <h2>Nowy Obiekt</h2>
     </div>
-      <div class="form-group">
-          <label for="name">Object Name</label>
-          <input type="name" class="form-control" ng-model="vm.model.name" id="name" placeholder="Object Name">
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="description" class="form-control" id="description" ng-model="vm.model.description" placeholder="Description of object">
-        </div>
-        <div class="form-group">
-          <label for="description">Address</label>
-          <input type="Address" class="form-control" id="address" ng-model="vm.model.address" placeholder="Object Address">
-        </div>
-        <div class="form-group">
-          <label for="type">Object type</label>
-          <select class="form-control" ng-model="vm.model.type" id="type">
-            <option ng-repeat="item in vm.objectTypes" value="{{item}}">{{item.name}}</option>
 
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="price">Price</label>
-          <input type="price" class="form-control" id="price" ng-model="vm.model.price" placeholder="Object Address">
-        </div>
-        <button type="submit" class="btn btn-secondary" ng-click="vm.saveNewObject();">Dodaj Obiekt</button>
+    <div class="grid-template-new-object">
+
+      <div>
+          <div class="form-group">
+              <label for="name">Object Name</label>
+              <input type="text" class="form-control" ng-model="vm.model.name" id="name" placeholder="Object Name">
+          </div>
+    
+          <div class="form-group">
+              <label for="name">Start Hour</label>
+              <input type="text" class="form-control" ng-model="vm.model.startHour" id="startDate" placeholder="Start Event Hour">
+          </div>
+          
+          <div class="form-group">
+              <label for="description">Address</label>
+              <input type="text" class="form-control" id="address" ng-model="vm.model.address" placeholder="Object Address">
+          </div>
+
+      </div>
+
+      <div>
+          <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" id="description" ng-model="vm.model.description" placeholder="Description of object">
+            </div>
+         
+
+            <div class="form-group">
+                <label for="name">End Hour</label>
+                <input type="text" class="form-control" ng-model="vm.model.endHour" id="endDate" placeholder="End Event Hour">
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" ng-model="vm.model.price" placeholder="Object Address">
+            </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="type">Object type</label>
+        <select class="form-control" ng-model="vm.model.type" id="type">
+          <option ng-repeat="item in vm.objectTypes" value="{{item}}">{{item.name}}</option>
+
+        </select>
+      </div>
+
+      
+        <button type="submit" class="btn btn-success pull-right" ng-click="vm.saveNewObject();">Dodaj obiekt</button>
 </div>
  

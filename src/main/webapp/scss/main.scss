@@ -63,43 +63,56 @@ Development Ribbon
 }
 
 .new-object {
-    width: 700px !important;
+    width: auto;
     overflow-y: hidden;
-    height: 535px;
     .modal-dialog {
         width: 100% !important;
         margin: 0;
+        max-height: 100%;
     }
     .modal-body {
         overflow-y: hidden;
-        max-height: 545px;
+        max-height: 100%;
     }
 
     .modal-content {
         border: none;
         outline: none;
         box-shadow: none;
+        max-height: 100%;
     }
 }
 
 .booking-event {
-    width: 355px !important;
+    width: auto;
     overflow-y: hidden;
-    height: 480px;
     .modal-dialog {
         width: 100% !important;
         margin: 0;
+        max-height: 100%;
     }
     .modal-body {
-        overflow-y: hidden;
-        max-height: 520px;
+        max-height: 100%;
     }
 
     .modal-content {
         border: none;
         outline: none;
         box-shadow: none;
+        overflow-y: auto;
+        max-height: 100%;
     }
+}
+
+.grid-template-new-object {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 16px;
+
+}
+
+.form-control {
+    height: 30px !important;
 }
 
 /* ==========================================================================
