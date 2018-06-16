@@ -25,7 +25,9 @@
         }
 
         function openAddNewObjectDialog() {
-            AddNewObjectDialogService.open();
+            AddNewObjectDialogService.open().result.then(function(){
+                vm.getObjectDefinition();
+            });
         }
 
         $scope.$on('authenticationSuccess', function() {
@@ -43,10 +45,13 @@
         }
 
         function getObjectDefinition(){
-            ObjectDefinition.get({name:null, address: null, objectTypeId:null}, angular.bind(this,function(result){
-                vm.items = result;
+            ObjectDefinition.get({name:null, address: null, objectTypeId:null}).$promise.then(function(resp){
+                angular.forEach(resp, function(value,key){
+                    value.action = 'REZERWACJA';
+                });
+                vm.items = resp;
                 vm.search();
-            }));
+            });
         }
 
         function register () {
@@ -57,7 +62,7 @@
         vm.reverse = false;
         vm.filteredItems = [];
         vm.groupedItems = [];
-        vm.itemsPerPage = 10;
+        vm.itemsPerPage = 20;
         vm.pagedItems = [];
         vm.currentPage = 0;
 

@@ -34,10 +34,14 @@
                             var userId = account.id;
                             return userId;
                         });
+                    },
+                    clearInstance: function() {
+                        return resetModal;
                     }
                 }
             });
-            modalInstance.result.then(resetModal, resetModal);
+            // modalInstance.result.then(resetModal, resetModal);
+            return modalInstance;
         }
     }
 })();
